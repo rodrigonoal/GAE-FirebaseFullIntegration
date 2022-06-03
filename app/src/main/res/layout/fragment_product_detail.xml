@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
+        <import type="br.com.siecola.androidproject04.product.PriceConverter"/>
 
         <variable
             name="productDetailViewModel"
@@ -42,7 +43,7 @@
                 android:layout_marginEnd="8dp"
                 android:ems="10"
                 android:inputType="textCapWords"
-                android:text="@{productDetailViewModel.product.name}"
+                android:text="@={productDetailViewModel.product.name}"
                 android:textSize="24sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -72,7 +73,7 @@
                 android:layout_marginEnd="8dp"
                 android:ems="10"
                 android:inputType="textCapCharacters"
-                android:text="@{productDetailViewModel.product.code}"
+                android:text="@={productDetailViewModel.product.code}"
                 android:textSize="24sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -102,7 +103,7 @@
                 android:layout_marginEnd="8dp"
                 android:ems="10"
                 android:inputType="textCapSentences"
-                android:text="@{productDetailViewModel.product.description}"
+                android:text="@={productDetailViewModel.product.description}"
                 android:textSize="24sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -138,7 +139,8 @@
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView4"
-                app:productPrice="@{productDetailViewModel.product.price}" />
+                android:text="@={PriceConverter.priceToString(productDetailViewModel.product.price)}"
+                />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
 </layout>

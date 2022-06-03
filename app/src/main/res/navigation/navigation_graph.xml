@@ -17,9 +17,11 @@
         android:id="@+id/fragmentProductDetail"
         android:name="br.com.siecola.androidproject04.productdetail.ProductDetailFragment"
         android:label="fragment_product_detail"
-        tools:layout="@layout/fragment_product_detail">
+        tools:layout="@layout/fragment_product_detail" >
         <argument
             android:name="productCode"
+            app:nullable="true"
             app:argType="string" />
     </fragment>
+
 </navigation>

@@ -11,10 +11,11 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.RecyclerView.VERTICAL
 import br.com.siecola.androidproject04.databinding.FragmentProductsListBinding
+import com.google.firebase.analytics.FirebaseAnalytics
 
 private const val TAG = "ProductsListFragment"
 
-class ProductsListFragment: Fragment() {
+class ProductsListFragment : Fragment() {
     private val productViewModel: ProductListViewModel by lazy {
         ViewModelProvider(this).get(ProductListViewModel::class.java)
     }
@@ -41,6 +42,16 @@ class ProductsListFragment: Fragment() {
                 this.findNavController()
                     .navigate(ProductsListFragmentDirections.actionShowProductDetail(product.code!!))
             })
+
+        binding.fab.setOnClickListener { view ->
+            this.findNavController()
+                .navigate(ProductsListFragmentDirections.actionShowProductDetail(null))
+
+            val firebaseAnalytics = FirebaseAnalytics.getInstance(this.requireContext())
+            firebaseAnalytics.logEvent("new_item", null)
+        }
+
+
 
         return binding.root
     }
